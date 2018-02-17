@@ -36,4 +36,9 @@ public class CustomerController extends AbstractRestControllerTest {
         return new ResponseEntity<>(customerService.updateCustomerByDTO(id, customerDTO), HttpStatus.OK);
     }
 
+    @PatchMapping("{id}")
+    public ResponseEntity<CustomerDTO> patchCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
+        return new ResponseEntity<>(customerService.patchCustomer(id, customerDTO), HttpStatus.OK);
+    }
+
 }
