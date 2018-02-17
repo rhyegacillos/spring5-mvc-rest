@@ -41,4 +41,10 @@ public class CustomerController extends AbstractRestControllerTest {
         return new ResponseEntity<>(customerService.patchCustomer(id, customerDTO), HttpStatus.OK);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<CustomerDTO> deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomerById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
