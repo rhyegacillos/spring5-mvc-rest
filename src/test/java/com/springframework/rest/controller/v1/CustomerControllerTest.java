@@ -46,13 +46,11 @@ public class CustomerControllerTest extends AbstractRestControllerTestTest {
     @Test
     public void testCustomerList() throws Exception {
         CustomerDTO customer1 = new CustomerDTO();
-        customer1.setId(1L);
         customer1.setFirstname("Andrew");
         customer1.setLastname("Garfield");
         customer1.setCustomerUrl(customerController.BASE_URL + "/1");
 
         CustomerDTO customer2 = new CustomerDTO();
-        customer2.setId(2L);
         customer2.setFirstname("Andrew");
         customer2.setLastname("Garfield");
         customer2.setCustomerUrl(customerController.BASE_URL + "/2");
@@ -70,7 +68,6 @@ public class CustomerControllerTest extends AbstractRestControllerTestTest {
     @Test
     public void testGetCustomer() throws Exception {
         CustomerDTO customer1 = new CustomerDTO();
-        customer1.setId(1L);
         customer1.setFirstname("Andrew");
         customer1.setLastname("Garfield");
         customer1.setCustomerUrl(customerController.BASE_URL + "/1");

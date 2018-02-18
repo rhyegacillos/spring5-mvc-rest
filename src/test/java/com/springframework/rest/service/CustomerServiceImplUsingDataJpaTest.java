@@ -6,6 +6,7 @@ import com.springframework.rest.bootstrap.Bootstrap;
 import com.springframework.rest.domain.Customer;
 import com.springframework.rest.repository.CategoryRepository;
 import com.springframework.rest.repository.CustomerRepository;
+import com.springframework.rest.repository.VendorRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +31,9 @@ public class CustomerServiceImplUsingDataJpaTest {
     @Autowired
     CustomerRepository customerRepository;
 
+    @Autowired
+    VendorRepository vendorRepository;
+
     CustomerService customerService;
 
     @Before
@@ -38,7 +42,7 @@ public class CustomerServiceImplUsingDataJpaTest {
         System.out.println(customerRepository.findAll().size());
 
         //setup data for testing
-        Bootstrap bootstrap = new Bootstrap(categoryRepository, customerRepository);
+        Bootstrap bootstrap = new Bootstrap(categoryRepository, customerRepository, vendorRepository);
         bootstrap.run(); //load data
 
         customerService = new CustomerServiceImpl(CustomerMapper.INSTANCE, customerRepository);

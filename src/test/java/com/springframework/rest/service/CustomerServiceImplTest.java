@@ -103,7 +103,7 @@ public class CustomerServiceImplTest {
         CustomerDTO returnDTO = customerService.updateCustomerByDTO(1L, customerDTO);
 
         assertEquals(returnDTO.getFirstname(), customer.getFirstname());
-        assertEquals(returnDTO.getId(), customer.getId());
+        assertEquals(CustomerController.BASE_URL + "/1", returnDTO.getCustomerUrl());
     }
 
     @Test
