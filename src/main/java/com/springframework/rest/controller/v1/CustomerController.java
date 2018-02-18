@@ -2,6 +2,7 @@ package com.springframework.rest.controller.v1;
 
 import com.springframework.rest.api.v1.model.CustomerDTO;
 import com.springframework.rest.api.v1.model.CustomerListDTO;
+import com.springframework.rest.controller.AbstractRestControllerTest;
 import com.springframework.rest.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.springframework.rest.controller.v1;
+package com.springframework.rest.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
