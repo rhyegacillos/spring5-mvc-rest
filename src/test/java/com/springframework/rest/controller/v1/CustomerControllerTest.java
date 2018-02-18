@@ -47,19 +47,19 @@ public class CustomerControllerTest {
         customer1.setId(1L);
         customer1.setFirstname("Andrew");
         customer1.setLastname("Garfield");
-        customer1.setCustomerUrl("/api/v1/customers/1");
+        customer1.setCustomerUrl(customerController.BASE_URL + "/1");
 
         CustomerDTO customer2 = new CustomerDTO();
         customer2.setId(2L);
         customer2.setFirstname("Andrew");
         customer2.setLastname("Garfield");
-        customer2.setCustomerUrl("/api/v1/customers/2");
+        customer2.setCustomerUrl(customerController.BASE_URL + "/2");
 
         List<CustomerDTO> customers = Arrays.asList(customer1, customer2);
 
         when(customerService.getAllCustomers()).thenReturn(customers);
 
-        mockMvc.perform(get("/api/v1/customers")
+        mockMvc.perform(get(customerController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.customers", hasSize(2)));
@@ -71,11 +71,11 @@ public class CustomerControllerTest {
         customer1.setId(1L);
         customer1.setFirstname("Andrew");
         customer1.setLastname("Garfield");
-        customer1.setCustomerUrl("/api/v1/customers/1");
+        customer1.setCustomerUrl(customerController.BASE_URL + "/1");
 
         when(customerService.getCustomerById(any())).thenReturn(customer1);
 
-        mockMvc.perform(get("/api/v1/customers/1")
+        mockMvc.perform(get(customerController.BASE_URL +"/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstname",equalTo("Andrew")));

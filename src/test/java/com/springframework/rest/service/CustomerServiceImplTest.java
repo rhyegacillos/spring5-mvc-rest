@@ -2,6 +2,7 @@ package com.springframework.rest.service;
 
 import com.springframework.rest.api.v1.mapper.CustomerMapper;
 import com.springframework.rest.api.v1.model.CustomerDTO;
+import com.springframework.rest.controller.v1.CustomerController;
 import com.springframework.rest.domain.Customer;
 import com.springframework.rest.repository.CustomerRepository;
 import org.junit.Before;
@@ -82,7 +83,7 @@ public class CustomerServiceImplTest {
         CustomerDTO savedDTO = customerService.createNewCustomer(customerDTO);
 
         assertEquals(savedDTO.getFirstname(), customerSaved.getFirstname());
-        assertEquals("/api/v1/customers/1", savedDTO.getCustomerUrl());
+        assertEquals(CustomerController.BASE_URL + "/1", savedDTO.getCustomerUrl());
 
     }
 
