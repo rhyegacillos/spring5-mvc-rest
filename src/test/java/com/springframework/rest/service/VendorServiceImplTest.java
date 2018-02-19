@@ -12,9 +12,15 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class VendorServiceImplTest {
@@ -98,9 +104,30 @@ public class VendorServiceImplTest {
 
     @Test
     public void patchVendor() {
+        VendorDTO vendorDTO = new VendorDTO();
+        vendorDTO.setName("vendor");
+
+        Vendor vendor = new Vendor();
+        vendor.setId(1L);
+        vendor.setName("vendor1");
+
+        given(vendorRepository.findById(anyLong())).willReturn(Optional.of(vendor));
+        given(vendorRepository.save(any(Vendor.class))).willReturn(vendor);
+
+        VendorDTO savedVendorDTO = vendorService.patchVendor(1L, vendorDTO);
+
+        then(vendorRepository).should().save(any(Vendor.class));
+        then(vendorRepository).should(times(1)).findById(anyLong());
+
+        assertThat(savedVendorDTO.getVendorUrl(), containsString("1"));
     }
 
     @Test
     public void deleteVendorById() {
+        Long id = 1L;
+
+        vendorRepository.deleteById(id);
+
+        verify(vendorRepository, times(1)).deleteById(anyLong());
     }
 }

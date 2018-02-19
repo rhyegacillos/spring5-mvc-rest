@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(VendorController.BASE_URL)
 @AllArgsConstructor
-public class VendorController {
+public class VendorController  {
 
     public static final String BASE_URL = "/api/v1/vendors";
     private final VendorService vendorService;
