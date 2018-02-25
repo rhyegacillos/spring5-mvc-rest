@@ -4,10 +4,13 @@ import com.springframework.rest.api.v1.model.CustomerDTO;
 import com.springframework.rest.api.v1.model.CustomerListDTO;
 import com.springframework.rest.controller.AbstractRestControllerTest;
 import com.springframework.rest.service.CustomerService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@Api(description = "This is Customer Controller")
 @RestController
 @RequestMapping(CustomerController.BASE_URL)
 @AllArgsConstructor
@@ -16,6 +19,7 @@ public class CustomerController extends AbstractRestControllerTest {
     public static final String BASE_URL = "/api/v1/customers";
     private final CustomerService customerService;
 
+    @ApiOperation(value = "This will get a list of customers", notes = "These are some notes about api")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CustomerListDTO getAllCustomers() {
